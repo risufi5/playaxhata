@@ -12,8 +12,11 @@ class UserController extends Controller
         $user = User::where('id', $request->user()['id'])->first();
         if ($user) {
             $userData = [
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
                 'totalScore' => $user->total_score,
-                'codes' => [$user->codes],
+                'codes' => $user->codes,
             ];
             return $userData;
         } else {
