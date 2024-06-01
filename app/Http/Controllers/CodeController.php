@@ -30,7 +30,7 @@ class CodeController extends Controller
         $code = Code::where('value', $request->code)->first();
 
         if ($code) {
-            if (($code->start_used && $code->finish_used) !== true) {
+            if (!($code->start_used && $code->finish_used)) {
                 $code->update([
                     'start_used' => true,
                     'start_used_date' => date('Y-m-d H:i:s'),
