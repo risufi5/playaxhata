@@ -55,7 +55,7 @@ services:
         networks:
             - custom-export-network
         healthcheck:
-            test: ["CMD-SHELL", "mysqladmin ping -u root -prootPassword"]
+            test: ["CMD", "mysqladmin", "ping", "-u", "root", "-prootPassword"]
             interval: 10s
             timeout: 5s
             retries: 5
