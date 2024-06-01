@@ -12,7 +12,7 @@ services:
             - .:/var/www
             - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
         networks:
-            - playaxhata-network
+            - custom-export-network
         ports:
             - "9001:9000"
         environment:
