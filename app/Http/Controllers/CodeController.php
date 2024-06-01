@@ -56,7 +56,7 @@ class CodeController extends Controller
         $code = Code::where('value', $request->code)->first();
 
         if ($code) {
-            if (($code->start_used === true) && ($code->finish_used !== true)) {
+            if ($code->start_used == true && $code->finish_used != true) {
                 $code->update([
                     'score' => $request->score,
                     'finish_used' => true,
