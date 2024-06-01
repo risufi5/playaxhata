@@ -22,10 +22,6 @@ services:
             DB_DATABASE: playaxhata
             DB_USERNAME: playaxhata
             DB_PASSWORD: playaxhata
-        depends_on:
-            mysql:
-                condition: service_healthy
-        entrypoint: sh -c 'while ! nc -z mysql 3306; do sleep 1; done; php-fpm'
 
     webserver:
         image: nginx:alpine
@@ -54,12 +50,6 @@ services:
             - mysql-data:/var/lib/mysql
         networks:
             - custom-export-network
-        healthcheck:
-            test: ["CMD", "mysqladmin", "ping", "-u", "root", "-prootPassword"]
-            interval: 10s
-            timeout: 5s
-            retries: 5
-            start_period: 30s
 
 networks:
     custom-export-network:
